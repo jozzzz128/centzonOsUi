@@ -1,0 +1,356 @@
+@font-face {
+  font-family: 'Roboto-Bold';
+  src: url(roboto/Roboto-Black.ttf);
+}
+
+@font-face {
+  font-family: 'Roboto-Regular';
+  src: url(roboto/Roboto-Regular.ttf);
+}
+
+*{
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto-Regular';
+  color: #000;
+}
+
+body{
+  background: #fff;
+}
+
+/*General Settigns*/
+body .screen{
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0px;
+  left: 0px;
+}
+
+body .screen .options{
+  position: absolute;
+  bottom: 2vw;
+  right: 2vw;
+}
+
+body .screen .options li{
+  border: 4px solid #000;
+  border-radius: 4px;
+  padding: 6px;
+  box-sizing: border-box;
+  font-family: 'Roboto-Bold';
+  display: inline-flex;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+body .screen .options li span{
+  font-size: 20px;
+  display: inline-block;
+  margin-right: 5px;
+}
+
+body .screen .logo .icon-logo{
+  transition: 0.2s;
+  font-size: 9vw;
+}
+
+body .screen .logo{
+  transition: 0.2s;
+  position: absolute;
+  top: calc(100% - 10vw);
+  left: 45.5vw;
+}
+/*End General Settings*/
+
+body #out-screen .logo .icon-logo{
+  font-size: 28vw;
+}
+
+body #out-screen .logo{
+  position: absolute;
+  top: calc(50vh - 15vw);
+  left: 36vw;
+}
+
+/*Card Instruction*/
+body .screen .instruction{
+  position: absolute;
+  width: 17vw;
+  bottom: 2vw;
+  left: 2vw;
+  transition: 0.2s;
+  opacity: 0;
+  animation: appearZoom 0.3s linear;
+}
+
+body .screen .instruction .icon-indicacion{
+  font-size: 10vw;
+  display: inline-block;
+  margin: 0.5vw 0 0.5vw 2.3vw;
+  animation: floatStable 2s linear infinite;
+}
+
+body .screen .instruction p{
+  font-family: 'Roboto-Bold';
+  font-size: 1.5vw;
+  text-align: center;
+  width: 100%;
+}
+
+body #out-screen .instruction{
+  opacity: 1;
+}
+/*End card Instruction*/
+
+/*Top Instructions*/
+body .screen .top-instruction{
+  font-size: 2.2vw;
+  font-family: 'Roboto-Bold';
+  text-align: center;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  padding: 2.8vw;
+  width: 100%;
+  transition: 0.2s;
+  box-sizing: border-box;
+}
+
+body .screen .top-instruction.appear{
+  animation: appearTop 0.2s linear;
+}
+
+body .screen .top-instruction.disappear{
+  animation: disappearTop 0.2s linear;
+}
+
+body .screen .top-instruction span{
+  display: block;
+  font-family: 'Roboto-Regular';
+  font-size: 1.8vw;
+  font-weight: normal;
+}
+
+body .screen .top-instruction span.separate{
+  margin-top: 1vw;
+}
+
+/*Card Animation*/
+body .screen .card-reader{
+  width: 56vw;
+  position: absolute;
+  top: calc(50vh - 10vw);
+  left: 22vw;
+  display: flex;
+  justify-content: center;
+  transition: 0.2s;
+  transition-delay: 0.5s;
+  transform: scale(0);
+  animation: appearZoom 0.3s linear;
+}
+
+body .screen .card-reader .icon-tarjeta{
+  font-size: 20vw;
+  display: inline-block;
+}
+
+body .screen .card-reader .wave{
+  text-align: right;
+  width: 18vw;
+  height: 20vw;
+  display: inline-block;
+  font-size: 20vw;
+  transition: 0.2s;
+  opacity: 0;
+  animation: appearOpacity 0.2s linear;
+}
+
+body .screen .card-reader .wave:first-child{
+  text-align: left;
+}
+
+body .screen .card-reader .wave-hidden{
+  display: none;
+}
+
+body #read-screen .card-reader{
+  transform: scale(1);
+}
+
+body #read-screen .card-reader .wave{
+  opacity: 1;
+}
+
+/*Lock Animation*/
+body .screen .lock-pass{
+  width: 56vw;
+  position: absolute;
+  text-align: center;
+  top: calc(50vh - 8vw);
+  left: 22vw;
+  transition: 0.2s;
+  transition-delay: 0.5s;
+  transform: scale(0);
+  animation: appearZoom 0.3s linear;
+}
+
+body .screen .lock-pass .icon-lock{
+  display: block;
+  font-size: 9vw;
+  margin-bottom: 0.5vw;
+}
+
+body .screen .lock-pass .icon-lock.wrong{
+  color: #D40D02;
+}
+
+body .screen .lock-pass .icon-lock.right{
+  color: #14A633;
+}
+
+body .screen .lock-pass .icon-lock.jump{
+  animation: increaseZoom 0.3s linear;
+}
+
+body .screen .lock-pass input{
+  font-size: 6vw;
+  height: 5vw;
+  width: 35vw;
+  outline: 0px;
+  text-align: center;
+  display: inline-block;
+  padding: 1.4vw;
+  padding-top: 1.7vw;
+  box-sizing: border-box;
+  border: 0.5vw solid #000;
+  border-radius: 1vw;
+}
+
+body #pass-screen .lock-pass{
+  transform: scale(1);
+}
+
+/*SO Animation*/
+body .screen .so-select{
+  width: 100%;
+  position: absolute;
+  text-align: center;
+  top: calc(50vh - 10vw);
+  left: 0px;
+  transition: 0.2s;
+  transition-delay: 0.5s;
+  transform: scale(0);
+  text-align: center;
+  animation: appearZoom 0.3s linear;
+}
+
+body .screen .so-select li > span{
+  display: inline-block;
+  font-size: 12vw;
+  margin-bottom: 1vw;
+}
+
+body .screen .so-select li > span.icon-linux{
+  font-size: 14vw;
+}
+
+body .screen .so-select li{
+  display: inline-block;
+  list-style: none;
+  margin: 0 5vw;
+  transition: 0.2s;
+  opacity: 0.5;
+  cursor: pointer;
+}
+
+body .screen .so-select li:hover{
+  transform: scale(1.2);
+  opacity: 1;
+}
+
+body .screen .so-select p{
+  font-size: 2.2vw;
+}
+
+body .screen .so-select p span{
+  display: block;
+  font-size: 1.2vw;
+  text-transform: uppercase;
+}
+
+body #so-screen .so-select{
+  transform: scale(1);
+}
+
+/*Animations*/
+
+@keyframes appearZoom {
+  0%{
+    transform: scale(0);
+  }
+  75%{
+    transform: scale(1.2);
+  }
+}
+
+@keyframes increaseZoom {
+  75%{
+    transform: scale(1.2);
+  }
+}
+
+@keyframes appearTop {
+  0%{
+    transform: translateY(-100%);
+  }
+  80%{
+    transform: translateY(20%);
+  }
+  100%{
+    transform: translateY(0%);
+  }
+}
+
+@keyframes disappearTop {
+  0%{
+    transform: translateY(0%);
+  }
+  20%{
+    transform: translateY(30%);
+  }
+  50%{
+    transform: translateY(0%);
+  }
+  100%{
+    transform: translateY(-100%);
+  }
+}
+
+@keyframes floatStable {
+  0%{
+    transform: translateY(0%);
+  }
+  25%{
+    transform: translateY(5%);
+  }
+  50%{
+    transform: translateY(0%);
+  }
+  75%{
+    transform: translateY(-5%);
+  }
+  100%{
+    transform: translateY(0%);
+  }
+}
+
+@keyframes appearOpacity {
+  0%{
+    opacity: 0;
+  }
+  100%{
+    opacity: 1;
+  }
+}
