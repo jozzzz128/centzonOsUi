@@ -118,12 +118,24 @@ body .screen .top-instruction{
   box-sizing: border-box;
 }
 
+body .screen .top-instruction .flex{
+  display: inline-flex;
+  align-items: center;
+}
+
 body .screen .top-instruction.appear{
   animation: appearTop 0.2s linear;
 }
 
 body .screen .top-instruction.disappear{
   animation: disappearTop 0.2s linear;
+}
+
+body .screen .top-instruction p{
+  text-align: left;
+  display: inline-block;
+  font-family: 'Roboto-Bold';
+  margin-left: 0.5vw;
 }
 
 body .screen .top-instruction span{
@@ -133,8 +145,17 @@ body .screen .top-instruction span{
   font-weight: normal;
 }
 
+body .screen .top-instruction p span{
+  font-size: 1.5vw;
+}
+
 body .screen .top-instruction span.separate{
   margin-top: 1vw;
+}
+
+body .screen .top-instruction span.icon-linux{
+  display: inline-block;
+  font-size: 6vw;
 }
 
 /*Card Animation*/
@@ -281,6 +302,63 @@ body .screen .so-select p span{
 }
 
 body #so-screen .so-select{
+  transform: scale(1);
+}
+
+/*distro Select Screen*/
+body .screen .distro-select{
+  width: 100%;
+  position: absolute;
+  text-align: center;
+  top: calc(50vh - 11.5vw);
+  left: 0px;
+  transition: 0.2s;
+  transition-delay: 0.5s;
+  transform: scale(0);
+  animation: appearZoom 0.3s linear;
+}
+
+body .screen .distro-select li{
+  width: 10.8vw;
+  height: 10.5vw;
+  display: inline-block;
+  margin: 0.7vw;
+  border: 0.4vw solid #000;
+  border-radius: 1.2vw;
+  font-size: 2.4vw;
+  box-sizing: border-box;
+  line-height: 1;
+  padding-top: 2.7vw;
+  cursor: pointer;
+  transition: 0.2s;
+  position: relative;
+}
+
+body .screen .distro-select li span{
+  font-size: 1.1vw;
+  text-transform: uppercase;
+  display: block;
+  font-family: 'Roboto-Bold';
+  transition: 0.2s;
+}
+
+body .screen .distro-select li span.arch{
+  position: absolute;
+  bottom: 0.5vw;
+  width: 100%;
+  text-align: center;
+}
+
+body .screen .distro-select li:hover span{
+  color: #fff;
+}
+
+body .screen .distro-select li:hover{
+  background: #000;
+  color: #fff;
+}
+
+body #distro-screen.screen .distro-select{
   transform: scale(1);
 }
 

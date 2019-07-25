@@ -101,7 +101,7 @@ function checkPassScreen(){
 
 function verifyPass(param1,event){
     if(event.keyCode == 13) {
-      var pass = "queperramiamiga";
+      var pass = "12345";
       var lock = param1.parentElement.querySelector(".icon-lock").classList;
 
       lock.add("jump");
@@ -114,10 +114,8 @@ function verifyPass(param1,event){
         lock.add("right");
         param1.setAttribute("onkeyup","");
         selectOScreen();
-      }else{
-        if(!(lock.contains("wrong"))){
-          lock.add("wrong");
-        }
+      }else if(!(lock.contains("wrong"))){
+        lock.add("wrong");
       }
 
     }
@@ -142,7 +140,49 @@ function selectOScreen(){
   setTimeout(function(){
     var soSelect = document.createElement("ul");
         soSelect.classList.add("so-select");
-        soSelect.innerHTML = '<li><span class="icon-finder"></span><p>Mac OS<span>Multiples Distribuciones</span></p></li> <li><span class="icon-linux"></span><p>Linux<span>Multiples Distribuciones</span></p></li> <li><span class="icon-windows8"></span><p>Windows<span>Multiples Distribuciones</span></p></li>';
+        soSelect.innerHTML = '<li><span class="icon-finder"></span><p>Mac OS<span>Multiples Distribuciones</span></p></li> <li onclick="osSelectedScreen(1);"><span class="icon-linux"></span><p>Linux<span>Multiples Distribuciones</span></p></li> <li><span class="icon-windows8"></span><p>Windows<span>Multiples Distribuciones</span></p></li>';
     container.append(soSelect);
   },1100);
+}
+
+function osSelectedScreen(param1){
+  var distros = ['Debian<span>10.0 Buster</span><span class="arch">x64</span>','Ubuntu<span>18.04.3 LTS</span><span class="arch">x64</span>','CentOS<span>7.19 Atomic</span><span class="arch">x64</span>','Arch<span>2.17 Axel</span><span class="arch">x64</span>','Manjaro<span>9 Stretch</span><span class="arch">x64</span>','GenToo<span>9 Stretch</span><span class="arch">x64</span>','Mint<span>9 Stretch</span><span class="arch">x64</span>','Kali<span>9 Stretch</span><span class="arch">x64</span>'];
+  var topDistros = distros.length / 2;
+  if( !(Number.isInteger(topDistros)) ){
+    topDistros++;
+    topDistros = parseInt(topDistros);
+  }
+
+  if(param1 == 1){
+    var prevInstruction = container.querySelector(".top-instruction");
+    container.id = "distro-screen";
+    setTimeout(function(){
+      container.querySelector(".so-select").remove();
+      prevInstruction.classList.remove("appear");
+      prevInstruction.classList.add("disappear");
+    },700);
+    setTimeout(function(){
+      prevInstruction.remove();
+      var topInstruction = document.createElement("h2");
+          topInstruction.classList.add("top-instruction");
+          topInstruction.classList.add("appear");
+          topInstruction.classList.add("distro");
+          topInstruction.innerHTML = '<div class="flex"><span class="icon-linux"></span><p>Selecciona Tu Distribución<span>LINUX</span></p></div>';
+      container.append(topInstruction);
+    },900);
+    setTimeout(function(){
+      var soSelect = document.createElement("ul");
+          soSelect.classList.add("distro-select");
+          for(var i = 0; i < distros.length; i++){
+            if(topDistros == i){
+              var br = document.createElement("br");
+              soSelect.append(br);
+            }
+            var distro = document.createElement("li");
+                distro.innerHTML = distros[i];
+            soSelect.append(distro);
+          }
+      container.append(soSelect);
+    },1100);
+  }
 }
